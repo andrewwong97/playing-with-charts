@@ -33,7 +33,15 @@ export default class MyChart extends Component {
 		return "Typical Hourly Rate by Tutor";
 	}
 
+
+	randomBarColors() {
+		var brcolors = ['rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)'];
+		var bgcolors = ['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)'];
+		return this.state.data.map(() => {var num = Math.floor(Math.random()*bgcolors.length); return [bgcolors[num], brcolors[num]];});
+	}
+
 	createChart() {
+		var randomColors = this.randomBarColors();
 		var ctx = $("#myChart");
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -42,30 +50,8 @@ export default class MyChart extends Component {
 		        datasets: [{
 		            label: this.getYLabel(),
 		            data: this.getY(),
-		            backgroundColor: [
-		                'rgba(255, 99, 132, 0.2)',
-		                'rgba(54, 162, 235, 0.2)',
-		                'rgba(255, 206, 86, 0.2)',
-		                'rgba(75, 192, 192, 0.2)',
-		                'rgba(153, 102, 255, 0.2)',
-		                'rgba(255, 159, 64, 0.2)',
-		                'rgba(255, 99, 132, 0.2)',
-		                'rgba(54, 162, 235, 0.2)',
-		                'rgba(255, 206, 86, 0.2)',
-		                'rgba(75, 192, 192, 0.2)'
-		            ],
-		            borderColor: [
-		                'rgba(255,99,132,1)',
-		                'rgba(54, 162, 235, 1)',
-		                'rgba(255, 206, 86, 1)',
-		                'rgba(75, 192, 192, 1)',
-		                'rgba(153, 102, 255, 1)',
-		                'rgba(255, 159, 64, 1)',
-		                'rgba(255,99,132,1)',
-		                'rgba(54, 162, 235, 1)',
-		                'rgba(255, 206, 86, 1)',
-		                'rgba(75, 192, 192, 1)',
-		            ],
+		            backgroundColor: randomColors.map((i) => i[0]),
+		            borderColor: randomColors.map((i) => i[1]),
 		            borderWidth: 1
 		        }]
 		    },
