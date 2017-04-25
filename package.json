@@ -10,6 +10,7 @@
   },
   "homepage": "https://andrewwong97.github.io/playing-with-charts",
   "devDependencies": {
+  	"gh-pages": "^0.12.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
