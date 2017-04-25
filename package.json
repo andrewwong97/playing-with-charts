@@ -8,7 +8,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
-  "homepage": "http://andrewwong97.github.io/playing-with-charts",
+  "homepage": "https://andrewwong97.github.io/playing-with-charts",
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
